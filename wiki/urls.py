@@ -15,10 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+from . import views
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include("encyclopedia.urls")),
-    path('wiki', include("encyclopedia.urls"))
+    path('wiki/<str:name>/', views.search_by_title, name="search_by_title")
 ]
