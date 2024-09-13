@@ -1,8 +1,10 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseNotFound
 from encyclopedia import util
-from django.http import HttpResponseNotFound
 
+
+def index(request):
+    return HttpResponse("Wiki Index!")
 
 def search_by_title(request, name):
     if util.get_entry(name):
