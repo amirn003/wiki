@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from encyclopedia import util
+from django.http import HttpResponseNotFound
 
 
 def search_by_title(request, name):
