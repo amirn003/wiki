@@ -9,8 +9,4 @@ from . import views
 
 urlpatterns = [
     path("", views.index, name="index")
-
-    # path('admin/', admin.site.urls),
-    # path('', include("encyclopedia.urls"), name="encyclopedia_index"),
-    # path('wiki/', include('wiki.urls'), name="wiki")
 ]
