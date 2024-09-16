@@ -9,7 +9,8 @@
 
     <ul>
         {% for entry in entries %}
-            <li><a href="wiki/{{ entry }}" a>{{ entry }}</a></li>
+            <!-- <li><a href="wiki/{{entry}}" a>{{ entry }}</a></li> -->
+            <li><a href="{% url 'search_by_title' entry%}" a>{{ entry }}</a></li>
         {% endfor %}
     </ul>
 

@@ -17,10 +17,14 @@ from django.contrib import admin
 from django.urls import include, path
 from . import views
 
+app_name = 'wiki'
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include("encyclopedia.urls"), name="encyclopedia_index"),
     path('wiki/', views.index, name="wiki_index"),
     path('wiki/<str:name>/', views.search_by_title, name="search_by_title")
+
+    #path('', views.index, name="wiki_index"),
+    #path('<str:name>/', views.search_by_title, name="search_by_title")
 ]

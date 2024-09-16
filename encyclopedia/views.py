@@ -8,3 +8,5 @@ def index(request):
         "entries": util.list_entries()
     })
 
+def display_page(request, name):
+    return render(request, f"entries/{name}.md")
