@@ -36,3 +36,8 @@ textarea {
 .sidebar h2 {
     margin-top: 5px;
 }
+
+#content {
+  width: 75%;
+  height: 25vh;
+}
