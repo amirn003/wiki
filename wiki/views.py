@@ -23,10 +23,9 @@ def search_by_query(request):
         matching_entries = []
         for entry in entries:
             if query.upper() in entry.upper():
-                print(f"{query.upper()} ===> {entry}")
                 matching_entries.append(entry)
 
-        return HttpResponse(f"<h1> {query} </h1><br> <p> {matching_entries} </p>")
-
-
-        #return HttpResponseNotFound("Page not found.")
+        if matching_entries:
+            return HttpResponse(f"<h1> Articles found for your search: {query} </h1><br> <p> {matching_entries} </p>")
+        else:
+            return HttpResponseNotFound("Page not found.")
