@@ -1,0 +1,22 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Wiki
+{% endblock %}
+
+
+{% block body %}
+<h1>Welcome to the Matching entries page</h1>
+
+<p>You enter this: <b>{{ query }}</b></p>
+<p>We found these pages for you:</p>
+
+<ul>
+  {% for match in matching_entries %}
+    <li> <a href="{% url 'search_by_title' match %}">{{ match }}</a></li>
+  {% endfor %}
+
+</ul>
+
+
+{% endblock body %}

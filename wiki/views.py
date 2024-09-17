@@ -26,6 +26,10 @@ def search_by_query(request):
                 matching_entries.append(entry)
 
         if matching_entries:
-            return HttpResponse(f"<h1> Articles found for your search: {query} </h1><br> <p> {matching_entries} </p>")
+            #return HttpResponse(f"<h1> Articles found for your search: {query} </h1><br> <p> {matching_entries} </p>")
+            return render(request, "wiki/matching_entries.html", {
+                "query": query,
+                "matching_entries": matching_entries
+            })
         else:
             return HttpResponseNotFound("Page not found.")
