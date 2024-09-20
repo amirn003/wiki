@@ -14,3 +14,6 @@ def display_page(request, name):
 
 def add(request):
     return render(request, "encyclopedia/add.html")
+
+def new_entry(request):
+    return HttpResponse("<h1> NEW ENTRY </h1>")
