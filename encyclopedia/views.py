@@ -19,7 +19,13 @@ def new_entry(request):
     if request.method == "POST":
         print("This is a POST Method")
         title = request.POST.get("title")
+        context = request.POST.get("content")
+        print(context)
         for entry in util.list_entries():
-            if title.upper() in entry.upper():
+            if title.upper() == entry.upper():
                 return HttpResponseBadRequest(f"<h1>'{title}' is already in the encyclopedia!<h1>")
+            else:
+                util.save_entry(title, context)
+                display_page(request, title)
+
         return HttpResponse(f"<h1> NEW POST for: {title} </h1>")
