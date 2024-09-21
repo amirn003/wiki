@@ -16,4 +16,7 @@ def add(request):
     return render(request, "encyclopedia/add.html")
 
 def new_entry(request):
-    return HttpResponse("<h1> NEW ENTRY </h1>")
+    if request.method == "POST":
+        print("This is a POST Method")
+        title = request.POST.get("title")
+        return HttpResponse(f"<h1> NEW POST for: {title} </h1>")
