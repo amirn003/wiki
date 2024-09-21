@@ -27,5 +27,5 @@ def new_entry(request):
         else:
             util.save_entry(title, context)
             #display_page(request, title)
-            #return redirect(f'entries/{title}.md')
-            return redirect(reverse('article_path', args=[title]))
+            return redirect(f'/wiki/{title}')
+            # return redirect(reverse('article_path', args=[title]))
