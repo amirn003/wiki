@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseBadRequest
 
 from . import util
@@ -21,11 +21,10 @@ def new_entry(request):
         title = request.POST.get("title")
         context = request.POST.get("content")
         print(context)
-        for entry in util.list_entries():
-            if title.upper() == entry.upper():
-                return HttpResponseBadRequest(f"<h1>'{title}' is already in the encyclopedia!<h1>")
-            else:
-                util.save_entry(title, context)
-                display_page(request, title)
-
-        return HttpResponse(f"<h1> NEW POST for: {title} </h1>")
+        #for entry in util.list_entries():
+        if title.upper() in util.list_entries():
+            return HttpResponseBadRequest(f"<h1>'{title}' is already in the encyclopedia!<h1>")
+        else:
+            util.save_entry(title, context)
+            #display_page(request, title)
+            return redirect(f'entries/{title}.md')
