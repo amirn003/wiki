@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, reverse
 from django.http import HttpResponse, HttpResponseBadRequest
 
 from . import util
@@ -27,4 +27,5 @@ def new_entry(request):
         else:
             util.save_entry(title, context)
             #display_page(request, title)
-            return redirect(f'entries/{title}.md')
+            #return redirect(f'entries/{title}.md')
+            return redirect(reverse('article_path', args=[title]))
