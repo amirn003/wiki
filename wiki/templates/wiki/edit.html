@@ -1,0 +1,25 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Wiki
+{% endblock %}
+
+
+{% block body %}
+<h1>Edit your article {{ name }}</h1> <br><br>
+
+
+<form action="", method="POST"></form>
+  {% csrf_token %}
+  <label for="title">Title:</label><br>
+  <input class="" id="title" type="text" name="title" placeholder="Type your title"><br><br>
+  <label for="content">Content:</label><br>
+  <input id="content" type="textarea" name="content"><br><br>
+  <input type="submit" value="Save">
+
+</form>
+
+<p> {{ read_entry }}</p>
+
+
+{% endblock body %}

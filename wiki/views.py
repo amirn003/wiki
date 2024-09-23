@@ -39,3 +39,7 @@ def search_by_query(request):
             })
         else:
             return HttpResponseNotFound("Page not found.")
+
+
+def edit(request):
+    return render(request, "wiki/edit.html")

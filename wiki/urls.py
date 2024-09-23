@@ -24,7 +24,8 @@ urlpatterns = [
     path('', include("encyclopedia.urls"), name="encyclopedia_index"),
     # path('wiki/', views.index, name="wiki_index"),
     path('wiki/', views.search_by_query, name="search_by_query"),
-    path('wiki/<str:name>/', views.search_by_title, name="search_by_title")
+    path('wiki/<str:name>/', views.search_by_title, name="search_by_title"),
+    path('wiki/edit', views.edit, name="edit")
 
     #path('', views.index, name="wiki_index"),
     #path('<str:name>/', views.search_by_title, name="search_by_title")
