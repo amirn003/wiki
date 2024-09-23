@@ -41,5 +41,8 @@ def search_by_query(request):
             return HttpResponseNotFound("Page not found.")
 
 
-def edit(request):
-    return render(request, "wiki/edit.html")
+def edit(request, name):
+    return render(request, "wiki/edit.html", {
+        "name": name,
+        "read_entry": util.get_entry(name)
+    })
