@@ -45,7 +45,7 @@ def search_by_query(request):
 def edit(request, name):
     return render(request, "wiki/edit.html", {
         "name": name,
-        "read_entry": util.get_entry(name)
+        "read_entry": util.get_entry(name, False)
     })
 
 def save(request, name):
