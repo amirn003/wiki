@@ -10,7 +10,6 @@
 <a href="{% url 'edit' name%}"><button>Edit your article</button> </a>
 <br><br><br>
 
-<p> {{ read_entry }}</p>
-
+<p> {{ read_entry|safe }}</p>
 
 {% endblock body %}
