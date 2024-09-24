@@ -9,9 +9,6 @@ def index(request):
 def search_by_title(request, name):
     if util.get_entry(name):
         read_entry = util.get_entry(name)
-        # return HttpResponse(f"<h1> {name} </h1><br> <p> {read_entry} </p>")
-
-        # return render(request, "wiki/article.html")
         return render(request, "wiki/article.html", {
             "name": name,
             "read_entry": read_entry
@@ -23,7 +20,11 @@ def search_by_query(request):
     query = request.GET.get('q')
     if query and util.get_entry(query):
         read_entry = util.get_entry(query)
-        return HttpResponse(f"<h1> {query} </h1><br> <p> {read_entry} </p>")
+        # return HttpResponse(f"<h1> {query} </h1><br> <p> {read_entry} </p>")
+        return render(request, "wiki/article.html", {
+            "name": query.upper(),
+            "read_entry": read_entry
+        })
     else:
         entries = util.list_entries()
         matching_entries = []
