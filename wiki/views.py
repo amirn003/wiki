@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseNotFound
 from encyclopedia import util
 
@@ -50,6 +50,9 @@ def edit(request, name):
 
 def save(request, name):
     if request.method == "POST":
-        name = request.POST.get("title")
         content = request.POST.get("content")
-        return HttpResponse(f"<h1> Article '{name}' will be saved! </h1>")
+        util.save_entry(name, content)
+        # return HttpResponse(f"<h1> Article '{name}' saved! </h1>")
+        return redirect(f'/wiki/{name}')
+
+    return HttpResponseNotFound("Page not found.")
