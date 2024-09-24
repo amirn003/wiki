@@ -1,12 +1,14 @@
 from django.shortcuts import render, redirect, reverse
 from django.http import HttpResponse, HttpResponseBadRequest
+import random
 
 from . import util
 
 
 def index(request):
     return render(request, "encyclopedia/index.html", {
-        "entries": util.list_entries()
+        "entries": util.list_entries(),
+        "random_article": random.choice(util.list_entries())
     })
 
 def display_page(request, name):
