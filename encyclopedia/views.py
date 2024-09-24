@@ -19,7 +19,6 @@ def add(request):
 
 def new_entry(request):
     if request.method == "POST":
-        print("This is a POST Method")
         title = request.POST.get("title")
         context = request.POST.get("content")
         print(context)

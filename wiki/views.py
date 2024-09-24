@@ -47,3 +47,9 @@ def edit(request, name):
         "name": name,
         "read_entry": util.get_entry(name)
     })
+
+def save(request, name):
+    if request.method == "POST":
+        name = request.POST.get("title")
+        content = request.POST.get("content")
+        return HttpResponse(f"<h1> Article '{name}' will be saved! </h1>")
