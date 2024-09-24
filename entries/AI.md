@@ -1,3 +1,5 @@
 #AI
 
-New article NEXT
+AI stands for Artificial Intelligence
+
+
