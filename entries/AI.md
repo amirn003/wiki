@@ -1,5 +1,5 @@
 #AI
 
-AI stands for Artificial Intelligence
+## AI stands for Artificial Intelligence. 
 
 

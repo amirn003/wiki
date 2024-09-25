@@ -52,7 +52,6 @@ def save(request, name):
     if request.method == "POST":
         content = request.POST.get("content")
         util.save_entry(name, content)
-        # return HttpResponse(f"<h1> Article '{name}' saved! </h1>")
         return redirect(f'/wiki/{name}')
 
     return render(request, "wiki/404.html")
