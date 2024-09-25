@@ -14,7 +14,7 @@ def search_by_title(request, name):
             "read_entry": read_entry
         })
     else:
-        return HttpResponseNotFound("Page not found.")
+        return render(request, "wiki/404.html")
 
 def search_by_query(request):
     query = request.GET.get('q')
@@ -39,7 +39,7 @@ def search_by_query(request):
                 "matching_entries": matching_entries
             })
         else:
-            return HttpResponseNotFound("Page not found.")
+            return render(request, "wiki/404.html")
 
 
 def edit(request, name):
@@ -55,4 +55,4 @@ def save(request, name):
         # return HttpResponse(f"<h1> Article '{name}' saved! </h1>")
         return redirect(f'/wiki/{name}')
 
-    return HttpResponseNotFound("Page not found.")
+    return render(request, "wiki/404.html")
