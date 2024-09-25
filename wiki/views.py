@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse, HttpResponseNotFound
+from django.http import HttpResponse
 from encyclopedia import util
 
 
@@ -18,7 +18,7 @@ def search_by_title(request, name):
 
 def search_by_query(request):
     query = request.GET.get('q')
-    if query and util.get_entry(query):
+    if query and util.get_entry(query) and query is not None:
         read_entry = util.get_entry(query)
         # return HttpResponse(f"<h1> {query} </h1><br> <p> {read_entry} </p>")
         return render(request, "wiki/article.html", {
@@ -38,8 +38,8 @@ def search_by_query(request):
                 "query": query,
                 "matching_entries": matching_entries
             })
-        else:
-            return render(request, "wiki/404.html")
+
+    return render(request, "wiki/404.html")
 
 
 def edit(request, name):
