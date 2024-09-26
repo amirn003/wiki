@@ -21,12 +21,8 @@ def new_entry(request):
     if request.method == "POST":
         title = request.POST.get("title")
         context = request.POST.get("content")
-        print(context)
-        #for entry in util.list_entries():
-        if title.upper() in util.list_entries():
+        if title in util.list_entries():
             return HttpResponseBadRequest(f"<h1>'{title}' is already in the encyclopedia!<h1>")
         else:
             util.save_entry(title, context)
-            #display_page(request, title)
             return redirect(f'/wiki/{title}')
-            # return redirect(reverse('article_path', args=[title]))
