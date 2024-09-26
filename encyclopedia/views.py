@@ -20,9 +20,12 @@ def add(request):
 def new_entry(request):
     if request.method == "POST":
         title = request.POST.get("title")
-        context = request.POST.get("content")
-        if title in util.list_entries():
-            return HttpResponseBadRequest(f"<h1>'{title}' is already in the encyclopedia!<h1>")
-        else:
-            util.save_entry(title, context)
-            return redirect(f'/wiki/{title}')
+        content = request.POST.get("content")
+
+        if not title:
+            return HttpResponseBadRequest(f"<h1>Please enter a title!</h1>")
+        if  title in util.list_entries():
+            return HttpResponseBadRequest(f"<h1>'{title}' is already in the encyclopedia!</h1>")
+
+        util.save_entry(title, content)
+        return redirect(f'/wiki/{title}')
