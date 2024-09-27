@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from encyclopedia import util
+from django import forms
 
 
 def index(request):
@@ -35,10 +36,17 @@ def search_by_query(request):
 
     return render(request, "wiki/404.html")
 
+class ArticleForm(forms.Form):
+    title = forms.CharField(label="Title",widget=forms.TextInput(attrs={"id": "title"}))
+    content = forms.CharField(label="Content", widget=forms.Textarea)
+
+    content.widget.attrs.update({"id": "content"})
+
 def edit(request, name):
     return render(request, "wiki/edit.html", {
         "name": name,
-        "read_entry": util.get_entry(name, False)
+        "read_entry": util.get_entry(name, False),
+        "form": ArticleForm()
     })
 
 def save(request, name):

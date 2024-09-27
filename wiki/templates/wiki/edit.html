@@ -9,14 +9,13 @@
 <h1>Edit your article: {{ name }}</h1> <br><br>
 
 
-<!-- <form action="save/" method="POST">-->
 <form action="{% url 'save' name %}" method="POST">
   {% csrf_token %}
-  <label for="title">Title:</label><br>
-  <input id="title" disabled="disabled" type="text" name="title" placeholder="{{ name }}"><br><br>
+  <label for="title">{{ form.title.label }}</label>
+  <input id="title" disabled="disabled" type="text" name="title" placeholder="{{ name }}"><br>
 
-  <label for="content">Content:</label><br>
-  <textarea id="content" name="content" contentEditable="true">{{ read_entry }}</textarea><br><br>
+  <label for="content">{{ form.content.label }}:</label>
+  <textarea id="content" name="content" contentEditable="true">{{ read_entry }}</textarea>
 
   <input type="submit" value="Save">
 </form>
