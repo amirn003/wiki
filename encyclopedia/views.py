@@ -32,7 +32,9 @@ def new_entry(request):
         if not title:
             return HttpResponseBadRequest(f"<h1>Please enter a title!</h1>")
         if  title in util.list_entries():
-            return HttpResponseBadRequest(f"<h1>'{title}' is already in the encyclopedia!</h1>")
+            return render(request, "encyclopedia/500.html", {
+                "title": title
+            })
 
         util.save_entry(title, content)
         return redirect(f'/wiki/{title}')
