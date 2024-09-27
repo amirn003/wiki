@@ -12,6 +12,11 @@ h1 {
     padding-top: 20px;
 }
 
+form > label, input, textarea {
+  display: block;
+  margin-bottom: 10px;
+}
+
 textarea {
     height: 90vh;
     width: 80%;

@@ -1,9 +1,14 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseBadRequest
+from django import forms
+from . import util
 import random
 
-from . import util
+class ArticleForm(forms.Form):
+    title = forms.CharField(label="Title",widget=forms.TextInput(attrs={"id": "title"}))
+    content = forms.CharField(label="Content", widget=forms.Textarea)
 
+    content.widget.attrs.update({"id": "content"})
 
 def index(request):
     return render(request, "encyclopedia/index.html", {
@@ -15,7 +20,9 @@ def display_page(request, name):
     return render(request, f"entries/{name}.md")
 
 def add(request):
-    return render(request, "encyclopedia/add.html")
+    return render(request, "encyclopedia/add.html", {
+        "form": ArticleForm()
+    })
 
 def new_entry(request):
     if request.method == "POST":
